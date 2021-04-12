@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Terminal Tabs
+Icon=org.gnome.Terminal
+Exec="/home/mmathieum/gnome-terminal-tabs.sh"
+Comment=Open most used tabs terminal
+Categories=GNOME;GTK;System;TerminalEmulator;
+Terminal=false

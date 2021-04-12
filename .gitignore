@@ -1,0 +1,9 @@
+# Ignore eveything
+*
+# Except
+!.bashrc
+!.gitconfig
+!.gitignore
+!.local/share/applications/org.gnome.Terminal-Tabs.desktop
+!all-update.sh
+!gnome-terminal-tabs.sh
