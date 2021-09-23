@@ -2,6 +2,7 @@
 *
 # Except
 !.bashrc
+!.config/transmission/settings.json
 !.gitconfig
 !.gitignore
 !.local/share/applications/org.gnome.Terminal-Tabs.desktop

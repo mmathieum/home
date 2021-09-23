@@ -132,10 +132,18 @@ PS1=$PS1'\[\e]2;\W\a\]'
 
 export ANDROID_HOME=/opt/android-sdk
 export PATH=${PATH}:$ANDROID_HOME
+export PATH=${PATH}:$ANDROID_HOME/cmdline-tools/tools/bin
 export PATH=${PATH}:$ANDROID_HOME/tools
 export PATH=${PATH}:$ANDROID_HOME/tools/bin
 export PATH=${PATH}:$ANDROID_HOME/platform-tools
 
 export ANDROID_AVD_HOME=/media/LDATA/DEV/ANDROID/EMULATOR/AVD;
 
-source mt/.bashrc;
+# - "Please consider switching to the bundled Java runtime that is better suited for the IDE"
+# - "OpenJDK shows intermittent performance and UI issues."
+# # Android Studio > use same JDK as OS/shell. # disabled ^^
+# export JAVA_HOME="/usr/lib/jvm/java-1.11.0-openjdk-amd64";
+# export JDK_HOME=$JAVA_HOME;
+# export STUDIO_JDK=$JDK_HOME;
+
+source ~/mt/.bashrc;
