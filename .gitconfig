@@ -54,3 +54,5 @@
 	sback-sm = "!f() { git status -sb -- '*.back'; git submodule foreach git status -sb -- '*.back'; }; f"
 [gui]
 	tabsize = 4
+[pull]
+	rebase = false
