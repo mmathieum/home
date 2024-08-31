@@ -121,6 +121,10 @@ fi
 alias ggui='git gui &'
 alias astudio='/opt/android-studio/bin/studio.sh . &> studio.log &'
 
+# Linux version of OSX pbcopy and pbpaste.
+alias pbcopy='xsel --clipboard --input'
+alias pbpaste='xsel --clipboard --output'
+
 # export PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
 # PS1=$PS1'\[\e]2;\W\a\]'
 # if [ "$color_prompt" = yes ]; then

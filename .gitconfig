@@ -9,14 +9,16 @@
 	editor = gedit -s
 [alias]
 	add-all-sm-add = "!f() { git submodule foreach \" git add . \" ; git add . ; }; f"
-	addne = "!f() { git add -N $1; git add -e $1; }; f"
+	addne = "!f() { git add --intent-to-add $1; git add --edit $1; }; f"
 	addAllSb = "!f() { git add .; git sb; }; f"
 	backupCheckout = "!f() { cp $1 $1.back; git checkout $1; }; f"
 	backupMeld = "!f() { meld $1 $1.back; }; f"
 	backupRm = "!f() { rm $1.back; }; f"
+	brancha-sm = "!f() { git branch -a; git submodule foreach git branch -a; }; f"
 	branchvv = "!f() { git branch -vv; }; f"
 	cleanDemoSb = "!f() { git clean --dry-run -d ; git sb ; }; f"
 	cleanForceAllSb = "!f() { git clean --force -d ; git sb; }; f"
+	clipboardXClip = "!f() { xclip -out -sel clip; }; f"
 	cloneMtMmathieum = "!f() { git clone --branch mmathieum "git@github.com:mtransitapps/$1.git" ; }; f"
 	cloneBranchMmathieum = "!f() { git clone --branch mmathieum "$1" ; }; f"
 	commitq = "!f() { git commit -q -m \"$1\"; }; f"
@@ -24,14 +26,18 @@
 	commit-sm = "!f() { echo \"$(basename $PWD)\"; git commit -m \"$1\" || echo 'NO CHANGE' ; git submodule foreach \" git commit -m '$1' || echo 'NO CHANGE' \" ; }; f"
 	commit-sm-add = "!f() { git submodule foreach \" git commitqq '$1' || echo 'NO CHANGE' \" ; echo \"$(basename $PWD)\"; git add . ; git commitqq \"$1\" || echo \"NO CHANGE\" ; }; f"
 	commitAndPush = "!f() { git commit -m \"$1\"; git push; }; f"
+	commitClipboardXClip = "!f() { git commit -m \"$(xclip -out -sel clip)\"; }; f"
+	commitAndPushClipboardXClip = "!f() { git commit -m \"$(xclip -out -sel clip)\"; git push; }; f"
+	commitClipboardXClipDryRun = "!f() { git commit --dry-run -m \"$(xclip -out -sel clip)\"; git push --dry-run; }; f"
 	commitTodayUpdate-sm-add = "!f() { git commit-sm-add \"$(date +'%-B %-d update')\" ; }; f"
 	commitTodayUpdateAndPush = "!f() { git commit -m \"$(date +'%-B %-d update')\"; git push; }; f"
-	copyLastCommitXClip = "!f() { git log -1 --pretty=%B | xclip; echo \"Clipboard: '$(xclip -out)'.\"; }; f"
+	copyLastCommitXClip = "!f() { git log -1 --no-merges --pretty=%B | xclip -sel clip; echo \"Clipboard: '$(xclip -out -sel clip)'.\"; }; f"
 	createNewBranchAndPush = "!f() { git checkout -b $1; git push -u origin $1; }; f"
 	deleteBranchAndPush = "!f() { git branch --delete $1; git push origin --delete $1; }; f"
 	diffu0 = "!f() { git diff -U0 $1; }; f"
 	diffu0-sm = "!f() { git diffu0 $1; git submodule foreach git diffu0 $1; }; f"
 	diff-sm = "!f() { git diff; git submodule foreach git diff; }; f"
+	diffstaged-sm = "!f() { git diff --staged; git submodule foreach git diff --staged; }; f"
 	diffstat = "!f() { git diff --stat; }; f"
 	diffstat-sm = "!f() { git diff --stat; git submodule foreach git diff --stat; }; f"
 	diffword = "!f() { git diff --word-diff; }; f"
@@ -39,16 +45,20 @@
 	fetchp = "!f() { git fetch -p; }; f"
 	forcePushCurrentBranch = "!git push --force origin \"$(git rev-parse --abbrev-ref HEAD)\""
 	gc-sm = "!f() { git gc; git submodule foreach git gc; }; f"
-	logOneLine = "!f() { git log -n 7 --oneline; }; f"
-	logOneLine-sm = "!f() { echo \"$(basename $PWD)\"; git logOneLine; git submodule foreach git logOneLine; }; f"
+	log-sm = "!f() { echo \"$(basename $PWD)\"; git log $@; git submodule foreach git log $@; }; f"
+	logOneLine = "!f() { git log -n 7 --oneline $@ ; }; f"
+	logOneLine-sm = "!f() { echo \"$(basename $PWD)\"; git logOneLine $@; git submodule foreach git logOneLine $@; }; f"
+	logOneLineLastMonth-sm = "!f() { echo \"$(basename $PWD)\"; git logOneLine --since=\"last month\" $@; git submodule foreach git logOneLine --since=\"last month\" $@; }; f"
 	logOneLine111 = "!f() { git log -n 111 --oneline; }; f"
 	mergeFastForwardOnlyAndPush = "!f() { git merge --ff-only --no-commit $1; git push; }; f"
-	pull-sm = "!f() { echo \"$(basename $PWD)\"; git pull; git submodule foreach git pull; }; f"
+	pull-sm = "!f() { echo \"$(basename $PWD)\"; git pull --verbose; git submodule foreach git pull --verbose; }; f"
 	pullsb = "!f() { git pull; git sb; }; f"
 	pullsb-sm = "!f() { echo \"$(basename $PWD)\"; git pull; git submodule foreach git pull; git sb-sm; }; f"
 	push-sm = "!f() { git submodule foreach git push; echo \"$(basename $PWD)\"; git push; }; f"
 	pushorigin = "!f() { git push origin $1; }; f"
 	pushorigin-sm = "!f() { echo \"$(basename $PWD)\"; git push origin $1; git submodule foreach git push origin $1; }; f"
+	remotePruneOrigin = "!f() { git remote prune origin; }; f"
+	remotePruneOrigin-sm = "!f() { echo \"$(basename $PWD)\"; git remotePruneOrigin; git submodule foreach git remotePruneOrigin; }; f"
 	restoreSb = "!f() { git restore $1 ; git sb; }; f"
 	restoreAllSb = "!f() { git restoreSb . ; }; f"
 	restoreCleanForceAllSb = "!f() { git restore .; git clean -f ; git sb; }; f"
@@ -76,3 +86,8 @@
 	tabsize = 4
 [pull]
 	rebase = false
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
