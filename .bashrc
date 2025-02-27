@@ -119,7 +119,7 @@ fi
 # MMATHIEUM
 
 alias ggui='git gui &'
-alias astudio='/opt/android-studio/bin/studio.sh . &> studio.log &'
+alias astudio='/opt/android-studio/bin/studio . &> studio.log &'
 
 # Linux version of OSX pbcopy and pbpaste.
 alias pbcopy='xsel --clipboard --input'
@@ -147,6 +147,7 @@ export ANDROID_AVD_HOME=/media/LDATA/DEV/ANDROID/EMULATOR/AVD;
 # - "OpenJDK shows intermittent performance and UI issues."
 # # Android Studio > use same JDK as OS/shell. # disabled ^^
 # export JAVA_HOME="/usr/lib/jvm/java-1.11.0-openjdk-amd64";
+export JAVA_HOME="/opt/android-studio/jbr/";
 # export JDK_HOME=$JAVA_HOME;
 # export STUDIO_JDK=$JDK_HOME;
 

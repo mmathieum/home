@@ -5,6 +5,7 @@
 !.config/transmission/settings.json
 !.gitconfig
 !.gitignore
+!.gradle/gradle.properties
 !.local/share/applications/org.gnome.Terminal-Tabs.desktop
 !all-update.sh
 !gnome-terminal-tabs.sh
