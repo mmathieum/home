@@ -147,8 +147,14 @@ export ANDROID_AVD_HOME=/media/LDATA/DEV/ANDROID/EMULATOR/AVD;
 # - "OpenJDK shows intermittent performance and UI issues."
 # # Android Studio > use same JDK as OS/shell. # disabled ^^
 # export JAVA_HOME="/usr/lib/jvm/java-1.11.0-openjdk-amd64";
+# export JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64/";
 export JAVA_HOME="/opt/android-studio/jbr/";
 # export JDK_HOME=$JAVA_HOME;
 # export STUDIO_JDK=$JDK_HOME;
 
 source ~/mt/.bashrc;
+
+# needs secrets:
+source ~/secrets.bashrc;
+
+noip-duc --hostnames all.ddnskey.com --daemonize;
