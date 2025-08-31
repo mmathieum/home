@@ -5,6 +5,7 @@
 	ui = auto
 [push]
 	default = simple
+	autoSetupRemote = true
 [core]
 	editor = gedit -s
 [alias]
@@ -14,8 +15,12 @@
 	backupCheckout = "!f() { cp $1 $1.back; git checkout $1; }; f"
 	backupMeld = "!f() { meld $1 $1.back; }; f"
 	backupRm = "!f() { rm $1.back; }; f"
+	branch-sm = "!f() { git branch; git submodule foreach git branch; }; f"
+	branch-current-sm = "!f() { git branch --show-current; git submodule foreach git branch --show-current; }; f"
 	brancha-sm = "!f() { git branch -a; git submodule foreach git branch -a; }; f"
 	branchvv = "!f() { git branch -vv; }; f"
+	checkoutBranch = "!f() { git checkout -b $1; }; f"
+	checkoutBranchAndPush = "!f() { git checkoutBranch $1; git push }; f"
 	cleanDemoSb = "!f() { git clean --dry-run -d ; git sb ; }; f"
 	cleanForceAllSb = "!f() { git clean --force -d ; git sb; }; f"
 	clipboardXClip = "!f() { xclip -out -sel clip; }; f"
@@ -37,7 +42,8 @@
 	diffu0 = "!f() { git diff -U0 $1; }; f"
 	diffu0-sm = "!f() { git diffu0 $1; git submodule foreach git diffu0 $1; }; f"
 	diff-sm = "!f() { git diff; git submodule foreach git diff; }; f"
-	diffstaged-sm = "!f() { git diff --staged; git submodule foreach git diff --staged; }; f"
+	diffstaged = "!f() { git diff --staged; }; f"
+	diffstaged-sm = "!f() { git diffstaged; git submodule foreach git diffstaged; }; f"
 	diffstat = "!f() { git diff --stat; }; f"
 	diffstat-sm = "!f() { git diff --stat; git submodule foreach git diff --stat; }; f"
 	diffword = "!f() { git diff --word-diff; }; f"
@@ -47,7 +53,7 @@
 	forcePushCurrentBranch = "!git push --force origin \"$(git rev-parse --abbrev-ref HEAD)\""
 	gc-sm = "!f() { git gc; git submodule foreach git gc; }; f"
 	log-sm = "!f() { echo \"$(basename $PWD)\"; git log $@; git submodule foreach git log $@; }; f"
-	logOneLine = "!f() { git log --oneline $@ ; }; f"
+	logOneLine = "!f() { git log -n 1 --oneline $@ ; }; f"
 	logOneLine-sm = "!f() { echo \"$(basename $PWD)\"; git logOneLine $@; git submodule foreach git logOneLine $@; }; f"
 	logOneLine7 = "!f() { git log -n 7 --oneline $@ ; }; f"
 	logOneLine7-sm = "!f() { echo \"$(basename $PWD)\"; git logOneLine7 $@; git submodule foreach git logOneLine7 $@; }; f"
@@ -79,7 +85,8 @@
 	stashincludeuntracked-sm = "!f() { git stash --include-untracked; git submodule foreach \"git stash --include-untracked\"; }; f"
 	stashlist = "!f() { git stash list; }; f"
 	stashlist-sm = "!f() { git stash list; git submodule foreach \"git stash list\"; }; f"
-	stashpop-sm = "!f() { git stash pop; git submodule foreach \"git stash pop || echo 'NO STASH' \"; }; f"
+	stashpop = "!f() { git stash pop; }; f"
+	stashpop-sm = "!f() { git stashpop; git submodule foreach \"git stashpop || echo 'NO STASH' \"; }; f"
 	stashpullpop = "!f() { git stash; git pull; git stash pop; }; f"
 	stashpullpopreset = "!f() { git stash; git pull; git stash pop; git reset; }; f"
 	sb = "!f() { git status -sb; }; f"
@@ -90,6 +97,7 @@
 	sback = "!f() { git sb -- '*.back'; }; f"
 	sb-sm = "!f() { echo \"$(basename $PWD)\"; git sb; git submodule foreach git sb; }; f"
 	sback-sm = "!f() { git sb -- '*.back'; git submodule foreach git sb -- '*.back'; }; f"
+	switch-sm = "!f() { echo \"$(basename $PWD)\"; git switch $1; git submodule foreach git switch $1; }; f"
 [gui]
 	tabsize = 4
 [pull]
