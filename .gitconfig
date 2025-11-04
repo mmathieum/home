@@ -54,6 +54,7 @@
 	gc-sm = "!f() { git gc; git submodule foreach git gc; }; f"
 	gh-PrComment = "!f() { gh pr comment --body \"$@\" ; }; f"
 	gh-PrComment-GeminiReview = "!f() { git gh-prcomment \"/gemini review\" ; }; f"
+	gh-PrCreate-Me-Draft-Auto = "!f() { gh pr create --draft --assignee \"@me\" --fill-first ; }; f"
 	log-sm = "!f() { echo \"$(basename $PWD)\"; git log $@; git submodule foreach git log $@; }; f"
 	logOneLine = "!f() { git log -n 1 --oneline $@ ; }; f"
 	logOneLine-sm = "!f() { echo \"$(basename $PWD)\"; git logOneLine $@; git submodule foreach git logOneLine $@; }; f"
@@ -73,6 +74,7 @@
 	push-sm = "!f() { git submodule foreach git push; echo \"$(basename $PWD)\"; git push; }; f"
 	pushorigin = "!f() { git push origin $1; }; f"
 	pushorigin-sm = "!f() { echo \"$(basename $PWD)\"; git push origin $1; git submodule foreach git push origin $1; }; f"
+	revertHead = "!f() { git revert HEAD; }; f" # revert last commit
 	remotePruneOrigin = "!f() { git remote prune origin; }; f"
 	remotePruneOrigin-sm = "!f() { echo \"$(basename $PWD)\"; git remotePruneOrigin; git submodule foreach git remotePruneOrigin; }; f"
 	restoreSb = "!f() { git restore $1 ; git sb; }; f"
