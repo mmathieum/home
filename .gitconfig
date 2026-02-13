@@ -102,6 +102,7 @@
 	sb-sm = "!f() { echo \"$(basename $PWD)\"; git sb; git submodule foreach git sb; }; f"
 	sback-sm = "!f() { git sb -- '*.back'; git submodule foreach git sb -- '*.back'; }; f"
 	switch-sm = "!f() { echo \"$(basename $PWD)\"; git switch $1; git submodule foreach git switch $1; }; f"
+	switch-sm-only = "!f() { git submodule foreach git switch $1; }; f"
 [gui]
 	tabsize = 4
 [pull]
