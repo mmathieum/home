@@ -56,7 +56,8 @@
 	gh-PrComment = "!f() { gh pr comment --body \"$@\" ; }; f"
 	gh-PrComment-GeminiReview = "!f() { git gh-prcomment \"/gemini review\" ; }; f"
 	gh-PrCreate-Me-Draft-Auto = "!f() { gh pr create --draft --assignee \"@me\" --fill-first ; }; f"
-    lod = log --graph --pretty=format:'%C(auto)%h%d%Creset %C(cyan)(%cr)%Creset %C(green)%cn%Creset %s'
+	#
+	lod = log --pretty=format:'%C(auto)%h%d%Creset %C(cyan)(%cr)%Creset %s' # %C(green)%cn%Creset # --graph
 	lod1 = "!f() { git lod -n 1 $@ ; }; f"
 	lod-sm = "!f() { echo \"Entering '$(basename $PWD)'\"; git lod1; git submodule foreach git lod1; }; f"
 	lod7 = "!f() { git lod -n 7 $@ ; }; f"
@@ -74,7 +75,9 @@
 	lodLastMonth = "!f() { git lod --since=\"last month\"  $@ ; }; f"
 	lodLastMonth-sm = "!f() { echo \"Entering '$(basename $PWD)'\"; git lodLastMonth $@; git submodule foreach git lodLastMonth $@; }; f"
 	lodLastMonthMine-sm = "!f() { echo \"Entering '$(basename $PWD)'\"; git lod  --since=\"last month\" --author=\"Mathieu Méa\" $@; git submodule foreach git lod  --since=\"last month\" --author=\"Mathieu Méa\" $@; }; f"
+	lodSinceLastRelease = "!f() { git lod $(git describe --tags --abbrev=0)..HEAD $@ ; }; f"
 	lod111 = "!f() { git lod -n 111 ; }; f"
+	#
 	logOneLine = "!f() { git log -n 1 --oneline $@ ; }; f"
 	logOneLine-sm = "!f() { echo \"Entering '$(basename $PWD)'\"; git logOneLine $@; git submodule foreach git logOneLine $@; }; f"
 	logOneLine7 = "!f() { git log -n 7 --oneline $@ ; }; f"
@@ -92,7 +95,9 @@
 	logOneLineLastMonth = "!f() { git log --since=\"last month\" --oneline $@ ; }; f"
 	logOneLineLastMonth-sm = "!f() { echo \"Entering '$(basename $PWD)'\"; git logOneLineLastMonth $@; git submodule foreach git logOneLineLastMonth $@; }; f"
 	logOneLineLastMonthMine-sm = "!f() { echo \"Entering '$(basename $PWD)'\"; git log --oneline --since=\"last month\" --author=\"Mathieu Méa\" $@; git submodule foreach git log --oneline --since=\"last month\" --author=\"Mathieu Méa\" $@; }; f"
+	logOneLineSinceLastRelease = "!f() { git log --oneline $(git describe --tags --abbrev=0)..HEAD $@ ; }; f"
 	logOneLine111 = "!f() { git log -n 111 --oneline; }; f"
+	#
 	mergeFastForwardOnlyAndPush = "!f() { git merge --ff-only --no-commit $1; git push; }; f"
 	pull-sm = "!f() { echo \"Entering '$(basename $PWD)'\"; git pull --verbose; git submodule foreach git pull --verbose; }; f"
 	pullsb = "!f() { git pull; git sb; }; f"
