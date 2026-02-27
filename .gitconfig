@@ -57,7 +57,7 @@
 	gh-PrComment-GeminiReview = "!f() { git gh-prcomment \"/gemini review\" ; }; f"
 	gh-PrCreate-Me-Draft-Auto = "!f() { gh pr create --draft --assignee \"@me\" --fill-first ; }; f"
 	#
-	lod = log --pretty=format:'%C(auto)%h%d%Creset %C(cyan)(%cr)%Creset %s' # %C(green)%cn%Creset # --graph
+	lod = log --pretty=format:'%C(auto)%h%d%Creset %C(cyan)[%cI]%Creset %s' # %C(green)%cn%Creset # --graph
 	lod1 = "!f() { git lod -n 1 $@ ; }; f"
 	lod-sm = "!f() { echo \"Entering '$(basename $PWD)'\"; git lod1; git submodule foreach git lod1; }; f"
 	lod7 = "!f() { git lod -n 7 $@ ; }; f"
