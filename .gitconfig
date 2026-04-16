@@ -19,8 +19,8 @@
 	branch-current-sm = "!f() { git branch --show-current; git submodule foreach git branch --show-current; }; f"
 	brancha-sm = "!f() { git branch -a; git submodule foreach git branch -a; }; f"
 	branchvv = "!f() { git branch -vv; }; f"
-	checkoutBranch = "!f() { git checkout -b $1; }; f"
-	checkoutBranchAndPush = "!f() { git checkoutBranch $1; git push; }; f"
+	# checkoutBranch = "!f() { git checkout -b $1; }; f" # use switch instead of checkout
+	# checkoutBranchAndPush = "!f() { git checkoutBranch $1; git push; }; f" # use switch -c instead of checkout
 	cleanDemoSb = "!f() { git clean --dry-run -d ; git sb ; }; f"
 	cleanForceAllSb = "!f() { git clean --force -d ; git sb; }; f"
 	clipboardXClip = "!f() { xclip -out -sel clip; }; f"
@@ -38,7 +38,6 @@
 	commitTodayUpdate-sm-add = "!f() { git commit-sm-add \"$(date +'%-B %-d update')\" ; }; f"
 	commitTodayUpdateAndPush = "!f() { git commit -m \"$(date +'%-B %-d update')\"; git push; }; f"
 	copyLastCommitXClip = "!f() { git log -1 --no-merges --pretty=%B | xclip -sel clip; echo \"Clipboard: '$(xclip -out -sel clip)'.\"; }; f"
-	createNewBranchAndPush = "!f() { git checkout -b $1; git push -u origin $1; }; f"
 	deleteBranchAndPush = "!f() { git branch --delete $1; git push origin --delete $1; }; f"
 	diffu0 = "!f() { git diff -U0 $1; }; f"
 	diffu0-sm = "!f() { git diffu0 $1; git submodule foreach git diffu0 $1; }; f"
@@ -136,6 +135,8 @@
 	switch-sm-master = "!f() { git switch-sm master; }; f"
 	switch-sm-only = "!f() { git submodule foreach git switch $1; }; f"
 	switch-sm-only-master = "!f() { git switch-sm-only master; }; f"
+	switchCreateBranchAndPush = "!f() { git switch --create $1; git push; }; f"
+	switchCreateBranchAndPushOrigin = "!f() { git switch --create $1; git push -u origin $1; }; f"
 [gui]
 	tabsize = 4
 [pull]

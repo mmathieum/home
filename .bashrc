@@ -158,3 +158,15 @@ source ~/mt/.bashrc;
 source ~/secrets.bashrc;
 
 noip-duc --hostnames all.ddnskey.com --daemonize;
+
+STRING="Bonjour $(whoami) :)"
+STRING_LENGTH=${#STRING}
+STRING_LENGTH=$((STRING_LENGTH + 2));
+
+printf "+"
+printf -- '-%.0s'  $(seq $STRING_LENGTH);
+echo "+"
+echo "| $STRING |"
+printf "+"
+printf -- '-%.0s'  $(seq $STRING_LENGTH);
+echo "+"
