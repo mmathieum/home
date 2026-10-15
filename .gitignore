@@ -2,6 +2,7 @@
 *
 # Except
 !.bashrc
+!.config/Code/User/settings.json
 !.config/transmission/settings.json
 !.gitconfig
 !.gitignore
