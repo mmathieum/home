@@ -53,9 +53,9 @@
 	forcePushCurrentBranch = "!git push --force origin \"$(git rev-parse --abbrev-ref HEAD)\""
 	gc-sm = "!f() { git gc; git submodule foreach git gc; }; f"
 	gh-PrComment = "!f() { gh pr comment --body \"$@\" ; }; f"
-	gh-PrComment-CodeRabbitAIFullReview = "!f() { git gh-prcomment \"@coderabbitai full review\" ; }; f"
-	gh-PrComment-CodeRabbitAIReview = "!f() { git gh-prcomment \"@coderabbitai review\" ; }; f"
-	gh-PrComment-GeminiReview = "!f() { git gh-prcomment \"/gemini review\" ; }; f"
+	gh-PrComment-CodeRabbitAI-FullReview = "!f() { git gh-prcomment \"@coderabbitai full review\" ; }; f"
+	gh-PrComment-CodeRabbitAI-Review = "!f() { git gh-prcomment \"@coderabbitai review\" ; }; f"
+	gh-PrComment-Gemini-Review = "!f() { git gh-prcomment \"/gemini review\" ; }; f"
 	gh-PrCreate-Me-Draft-Auto = "!f() { gh pr create --draft --assignee \"@me\" --fill-first ; }; f"
 	#
 	lod = log --pretty=format:'%C(auto)%h%d%Creset %C(cyan)[%cI]%Creset %s' # %C(green)%cn%Creset # --graph
